@@ -1,0 +1,55 @@
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+version: 2
+jobs:
+  format:
+    docker:
+      - image: circleci/node:10.17.0
+
+    working_directory: ~/sv-align
+
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn format
+
+  lint:
+    docker:
+      - image: circleci/node:10.17.0
+
+    working_directory: ~/sv-align
+
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn lint
+
+  test:
+    docker:
+      - image: circleci/node:10.17.0
+    working_directory: ~/sv-align
+
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn test
+
+  build:
+    docker:
+      - image: circleci/node:10.17.0
+
+    working_directory: ~/sv-align
+
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn build
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - format
+      - lint
+      - test
+      - build
