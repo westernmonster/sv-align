@@ -1,0 +1,113 @@
+{
+  "name": "sv-align",
+  "version": "1.0.0",
+  "description": "Svelte Align Component",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/westernmonster/sv-trigger"
+  },
+  "author": "Jack Lee",
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "svelte",
+    "rollup",
+    "algin",
+    "align",
+    "sv-align",
+    "svelte-components"
+  ],
+  "browserslist": [
+    "defaults"
+  ],
+  "main": "build/main.js",
+  "module": "build/main.mjs",
+  "svelte": "./src/align/index.js",
+  "scripts": {
+    "format": "npx prettier --write src/align/**/\"*.{js,svelte}\"",
+    "lint:js": "eslint --fix src/align/**/*.js",
+    "lint:svelte": "eslint --fix src/align/**/*.svelte",
+    "lint:tests": "cross-env NODE_ENV=test eslint --fix src/align/**/*.test.js",
+    "lint": "yarn lint:js; yarn lint:svelte; yarn lint:tests",
+    "cleanup": "rimraf ./build",
+    "test": "rimraf ./coverage; cross-env NODE_ENV=test jest --coverage; jest-coverage-badges",
+    "prepublishOnly": "yarn format && yarn lint && yarn build",
+    "serve": "yarn cleanup; cross-env NODE_ENV=development rollup --config --watch",
+    "build": "yarn cleanup; cross-env NODE_ENV=production rollup --config"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@types/jest": "^26.0.9",
+    "autoprefixer": "^9.8.6",
+    "babel-jest": "^26.2.2",
+    "chokidar": "^3.4.2",
+    "cross-env": "^7.0.2",
+    "deasync": "^0.1.20",
+    "eslint": "^7.6.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "husky": "^4.2.5",
+    "jest": "^26.2.2",
+    "jest-coverage-badges": "^1.1.2",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.0.5",
+    "prettier-plugin-svelte": "^1.1.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.23.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-bundle-size": "^1.0.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-html2": "^2.0.0",
+    "rollup-plugin-livereload": "^1.3.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.0.3",
+    "rollup-plugin-svelte": "^5.2.3",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "svelte": "^3.24.1",
+    "svelte-preprocess": "^4.0.10",
+    "svelte-ts-preprocess": "^1.1.3",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./src/**/*.{js,ts}",
+      "!**/*.d.ts"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+    ],
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.ts$": "ts-jest",
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "./svelte-jest.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node",
+      "mjs",
+      "svelte"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format && yarn lint && yarn test"
+    }
+  }
+}

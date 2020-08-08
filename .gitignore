@@ -1,0 +1,11 @@
+.rpt2_cache
+*~
+.Trash-*
+.DS_Store
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+build
+coverage/lcov-report
+coverage/*.json
+coverage/*.info
