@@ -109,5 +109,8 @@
     "hooks": {
       "pre-commit": "yarn format && yarn lint && yarn test"
     }
+  },
+  "dependencies": {
+    "resize-observer-polyfill": "^1.5.1"
   }
 }
