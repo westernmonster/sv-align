@@ -1,5 +1,6 @@
 # sv-align
 
+[![CircleCI](https://circleci.com/gh/westernmonster/sv-align.svg?style=svg)](https://circleci.com/gh/westernmonster/sv-align)
 Svelte Align Component
 
 ## Getting Started
