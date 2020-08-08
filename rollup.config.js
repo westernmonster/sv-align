@@ -64,7 +64,7 @@ if (isDev) {
   )
 } else if (isProd) {
   // Minify
-  plugins.push(terser({ sourcemap: true, mangle: true }))
+  plugins.push(terser({  mangle: true }))
   plugins.push(
     babel({
       extensions: [".js", ".mjs", ".svelte"],
